@@ -29,7 +29,7 @@ def main(req: func.HttpRequest, doc: func.Out[func.Document]) -> func.HttpRespon
         )
     locationName = req_body.get('locationName')
     rating = req_body.get('rating')
-    if rating in range(1,6):
+    if rating in range(0,6):
         logging.info('rating within range')
     else:
         return func.HttpResponse(
