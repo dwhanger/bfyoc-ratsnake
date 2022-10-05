@@ -3,7 +3,7 @@ from pydoc import doc
 import azure.functions as func
 
 def main(req: func.HttpRequest, doc: func.DocumentList) -> func.HttpResponse:
-    logging.info('Python HTTP trigger function processed a request.')
+    logging.info('deployed through CICD')
     if not doc:
         logging.warning("ratingId not found")
         return func.HttpResponse(
