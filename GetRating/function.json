@@ -15,6 +15,17 @@
       "type": "http",
       "direction": "out",
       "name": "$return"
+    },
+    {
+      "type": "cosmosDB",
+      "name": "doc",
+      "databaseName": "bfyoc-icecream",
+      "collectionName": "ratings",
+      "connectionStringSetting": "AzureCosmosDBConnectionString",
+      "direction": "in",
+      "Id": "{Query.ratingId}",
+      "PartitionKey": "{Query.ratingId}"
     }
   ]
+  
 }

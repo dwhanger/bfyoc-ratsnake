@@ -1,24 +1,20 @@
 import logging
-
+from pydoc import doc
 import azure.functions as func
 
-
-def main(req: func.HttpRequest) -> func.HttpResponse:
+def main(req: func.HttpRequest, doc: func.DocumentList) -> func.HttpResponse:
     logging.info('Python HTTP trigger function processed a request.')
-
-    name = req.params.get('name')
-    if not name:
-        try:
-            req_body = req.get_json()
-        except ValueError:
-            pass
-        else:
-            name = req_body.get('name')
-
-    if name:
-        return func.HttpResponse(f"Hello, {name}. This HTTP triggered function executed successfully.")
-    else:
+    if not doc:
+        logging.warning("ToDo item not found")
         return func.HttpResponse(
-             "This HTTP triggered function executed successfully. Pass a name in the query string or in the request body for a personalized response.",
+            "Rating ID Not Found",
+            status_code=400
+        )
+    else:
+        logging.info("Found ToDo item, Description=%s",
+                     doc[0]['description'])
+        return func.HttpResponse(
+             str(doc[0]['description']),
              status_code=200
         )
+   
