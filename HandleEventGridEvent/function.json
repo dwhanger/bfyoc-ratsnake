@@ -5,6 +5,14 @@
       "type": "eventGridTrigger",
       "name": "event",
       "direction": "in"
+    },
+    {
+      "name": "orders",
+      "type": "blob",
+      "dataType": "binary",
+      "path": "bfyoicecreamsa/orders",
+      "connection": "MyStorageConnectionAppSetting",
+      "direction": "in"
     }
   ]
 }
